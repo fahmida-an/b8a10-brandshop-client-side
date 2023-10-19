@@ -1,10 +1,19 @@
 import { useLoaderData, useParams } from "react-router-dom";
-
+import { FaStar } from 'react-icons/fa';
 const DiorDetails = () => {
   const diorProducts = useLoaderData();
   const { _id, name, brandname, type, price, image, rating, details } =
     diorProducts;
-
+    const stars = [];
+    for(let i = 1; i<=5; i++){
+      // const starClassName = i <= rating ? <FaStar></FaStar> : '';
+      const isFilled = i <= rating;
+      stars.push(
+        <span key={i}>
+        {isFilled ? <FaStar className="text-red-500" /> : <FaStar />}
+      </span>
+      );
+    }
   return (
     <div>
         <h2 className="py-8 font-bold font-rancho text-3xl text-center">{type} Details</h2>
@@ -21,7 +30,7 @@ const DiorDetails = () => {
           <p>Type: {type}</p>
           <div>
           <p className="btn">Price: ${price}</p>
-          <p className="btn">Rating: {rating}</p>
+          <p className="btn">Rating: {stars}</p>
           </div>
           <div className="card-actions justify-end">
             <button className="btn">Update</button>

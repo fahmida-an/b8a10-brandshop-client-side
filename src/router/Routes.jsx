@@ -10,6 +10,7 @@ import DiorProduct from "../Pages/DiorProduct/diorProduct";
 import AddidasProduct from "../Pages/AddidasProduct/AddidasProduct";
 import NikeProduct from "../Pages/NikeProduct/NikeProduct";
 import DiorDetails from "../Pages/DiorProduct/DiorDetails";
+import PrivateRoute from "./PrivateRoute";
 const router = createBrowserRouter([
     {
       path: "/",
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
         },
         {
           path: "/addProduct",
-          element: <AddProducts></AddProducts>
+          element: <PrivateRoute><AddProducts></AddProducts></PrivateRoute>
         },
         {
           path: "/allProduct",

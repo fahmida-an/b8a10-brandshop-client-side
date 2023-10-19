@@ -3,8 +3,13 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Logo from "./Logo";
 
-const Navbar = () => {
-  const { user } = useContext(AuthContext);
+const Navbar = ({children}) => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleSignOut = () => {
+    logOut()
+      .then((result) => console.log(result))
+      .catch((error) => console.error(error));
+  };
   const navLinks = (
     <>
       <li>
@@ -111,7 +116,7 @@ const Navbar = () => {
                     </button>
                   </li>
                   <li>
-                    <button className="btn btn-sm  btn-ghost text-pinkdark1 hover:bg-pinkdark1 text-sm mb-1 w-full">
+                    <button onClick={handleSignOut} className="btn btn-sm  btn-ghost text-pinkdark1 hover:bg-pinkdark1 text-sm mb-1 w-full">
                       Logout
                     </button>
                   </li>
