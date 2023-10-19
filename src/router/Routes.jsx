@@ -5,6 +5,10 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import AddProducts from "../Pages/AddProducts/AddProducts";
+import AllProducts from "../Pages/AddProducts/AllProducts";
+import DiorProduct from "../Pages/DiorProduct/diorProduct";
+import AddidasProduct from "../Pages/AddidasProduct/AddidasProduct";
+import NikeProduct from "../Pages/NikeProduct/NikeProduct";
 const router = createBrowserRouter([
     {
       path: "/",
@@ -13,7 +17,8 @@ const router = createBrowserRouter([
       children: [
         {
             path: "/",
-            element: <Home></Home>
+            element: <Home></Home>,
+            loader: () => fetch('/brand.json')
         },
         {
            path: "/login",
@@ -26,7 +31,27 @@ const router = createBrowserRouter([
         {
           path: "/addProduct",
           element: <AddProducts></AddProducts>
-        }
+        },
+        {
+          path: "/allProduct",
+          element: <AllProducts></AllProducts>,
+          loader: () => fetch('http://localhost:4000/products')
+        },
+        {
+          path: "/products/Dior",
+          element:<DiorProduct></DiorProduct>,
+          loader: () => fetch('http://localhost:4000/products/Dior')
+        },
+        {
+          path: "/products/Addidas",
+          element:<AddidasProduct></AddidasProduct>,
+          loader: () => fetch('http://localhost:4000/products/Addidas')
+        },
+        {
+          path: "/products/Nike",
+          element:<NikeProduct></NikeProduct>,
+          loader: () => fetch('http://localhost:4000/products/Nike')
+        },
       ]
     },
   ]);
