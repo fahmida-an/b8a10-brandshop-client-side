@@ -11,6 +11,7 @@ import AddidasProduct from "../Pages/AddidasProduct/AddidasProduct";
 import NikeProduct from "../Pages/NikeProduct/NikeProduct";
 import DiorDetails from "../Pages/DiorProduct/DiorDetails";
 import PrivateRoute from "./PrivateRoute";
+import UpdateDiorProduct from "../Pages/DiorProduct/UpdateDiorProduct";
 const router = createBrowserRouter([
     {
       path: "/",
@@ -60,6 +61,11 @@ const router = createBrowserRouter([
           element: <DiorDetails></DiorDetails>,
           loader: ({params}) => fetch(`http://localhost:4000/products/Dior/${params.id}`)
           
+        },
+        {
+          path: "/products/Dior/update/:id",
+          element: <UpdateDiorProduct></UpdateDiorProduct>,
+          loader: ({params}) => fetch(`http://localhost:4000/products/Dior/${params.id}`)
         }
       ]
     },
