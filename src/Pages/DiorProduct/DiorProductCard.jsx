@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const DiorProductCard = ({ product }) => {
   const { _id, name, brandname, type, price, image, rating, details } = product;
@@ -17,7 +18,9 @@ const DiorProductCard = ({ product }) => {
         <p>Rating{rating}</p>
         
         <div className="card-actions justify-end">
+          <Link to={`/products/Dior/${_id}`}>
           <button className="btn btn-primary">See Details</button>
+          </Link>
         </div>
       </div>
     </div>

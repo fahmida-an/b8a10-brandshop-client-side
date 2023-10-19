@@ -9,6 +9,7 @@ import AllProducts from "../Pages/AddProducts/AllProducts";
 import DiorProduct from "../Pages/DiorProduct/diorProduct";
 import AddidasProduct from "../Pages/AddidasProduct/AddidasProduct";
 import NikeProduct from "../Pages/NikeProduct/NikeProduct";
+import DiorDetails from "../Pages/DiorProduct/DiorDetails";
 const router = createBrowserRouter([
     {
       path: "/",
@@ -52,6 +53,13 @@ const router = createBrowserRouter([
           element:<NikeProduct></NikeProduct>,
           loader: () => fetch('http://localhost:4000/products/Nike')
         },
+
+        {
+          path: "/products/Dior/:id",
+          element: <DiorDetails></DiorDetails>,
+          loader: ({params}) => fetch(`http://localhost:4000/products/Dior/${params.id}`)
+          
+        }
       ]
     },
   ]);
