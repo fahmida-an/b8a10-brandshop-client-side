@@ -1,51 +1,57 @@
-import { useLoaderData } from "react-router-dom";
-import Logo from "../../Sharedpages/Header/Logo";
-import swal from "sweetalert";
+import Logo from '../../Sharedpages/Header/Logo';
+import { useLoaderData } from 'react-router-dom';
+import swal from 'sweetalert';
 
-const UpdateDiorProduct = () => {
-  const diorProducts = useLoaderData();
-  const { _id, name, brandname, type, price, image, rating, details } =
-    diorProducts;
+const UpdateAddidasProduct = () => {
 
-  const handleUpdateProduct = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const image = form.image.value;
-    const name = form.name.value;
-    const brandname = form.brandname.value;
-    const type = form.select.value;
-    const price = form.price.value;
-    const rating = form.rating.value;
-    const details = form.details.value;
-    const updatedProduct = {
-      image,
-      name,
-      brandname,
-      type,
-      price,
-      rating,
-      details,
-    };
-    // console.log(updatedProduct);
+    const addidasProduct = useLoaderData();
+    const { _id, name, brandname, type, price, image, rating, details } = addidasProduct;
 
-    fetch(`http://localhost:4000/products/Dior/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
+    const handleUpdateProduct = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const image = form.image.value;
+        const name = form.name.value;
+        const brandname = form.brandname.value;
+        const type = form.select.value;
+        const price = form.price.value;
+        const rating = form.rating.value;
+        const details = form.details.value;
+        const updatedProduct = {
+          image,
+          name,
+          brandname,
+          type,
+          price,
+          rating,
+          details,
+        };
+        // console.log(updatedProduct);
+
+    fetch(`http://localhost:4000/products/Addidas/${_id}`, {
+        method: "PUT",
+        headers: {
+            "content-type" : "application/json"
+        },
+        body: JSON.stringify(updatedProduct)
     })
-      .then((res) => res.json())
-      .then((data) => {
+    .then(res => res.json())
+    .then(data => {
         console.log(data);
+        //reset form here option
+        // if(data.insertedId > 0){
+        //   alert('Success');
+        // }
+
         if(data.matchedCount > 0){
-          swal("Successfully", "Updated data!", "success");
-      }
-      });
-  };
-  return (
-    <div>
-      <Logo></Logo>
+            swal("Successfully", "Updated data!", "success");
+        }
+    })
+
+};
+    return (
+        <div>
+                  <Logo></Logo>
       <div className="max-w-6xl mx-auto">
         <h2 className="text-center py-8 font-bold text-5xl">Update Product</h2>
         <form
@@ -85,12 +91,9 @@ const UpdateDiorProduct = () => {
             <label className="label">
               <span className="label-text">Brand Name</span>
             </label>
-
+           
             <label className="input-group">
-              <select
-                name="brandname"
-                className="select select-bordered w-full "
-              >
+              <select name="brandname" className="select select-bordered w-full ">
                 <option disabled selected defaultValue={brandname}>
                   Brand Name
                 </option>
@@ -102,6 +105,7 @@ const UpdateDiorProduct = () => {
                 <option value="Gucci">Gucci</option>
               </select>
             </label>
+       
           </div>
 
           <div className="form-control">
@@ -166,15 +170,11 @@ const UpdateDiorProduct = () => {
             </label>
           </div>
 
-          <input
-            type="submit"
-            value="Update Product"
-            className="btn btn-block"
-          />
+          <input type="submit" value="Update Product" className="btn btn-block" />
         </form>
       </div>
-    </div>
-  );
+        </div>
+    );
 };
 
-export default UpdateDiorProduct;
+export default UpdateAddidasProduct;

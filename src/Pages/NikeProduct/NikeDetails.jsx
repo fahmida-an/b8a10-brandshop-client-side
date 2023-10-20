@@ -1,28 +1,24 @@
+import React from 'react';
 import { Link, NavLink, useLoaderData, useParams } from "react-router-dom";
 import { FaStar } from 'react-icons/fa';
-import swal from "sweetalert";
 
-
-const DiorDetails = () => {
-  const diorProducts = useLoaderData();
-  const { _id, name, brandname, type, price, image, rating, details } =
-    diorProducts;
-    const stars = [];
-    for(let i = 1; i<=5; i++){
-      // const starClassName = i <= rating ? <FaStar></FaStar> : '';
-      const isFilled = i <= rating;
-      stars.push(
-        <span key={i}>
-        {isFilled ? <FaStar className="text-red-500" /> : <FaStar />}
-      </span>
-      );
-    }
-
-
-  return (
-    <div>
-   
+const NikeDetails = () => {
+    const nikeProduct = useLoaderData();
+    const { _id, name, brandname, type, price, image, rating, details } =
+      nikeProduct;
+      const stars = [];
+      for(let i = 1; i<=5; i++){
+        // const starClassName = i <= rating ? <FaStar></FaStar> : '';
+        const isFilled = i <= rating;
+        stars.push(
+          <span key={i}>
+          {isFilled ? <FaStar className="text-red-500" /> : <FaStar />}
+        </span>
+        );
+      }
+    return (
         <div>
+             <div>
              <h2 className="py-8 font-bold font-rancho text-3xl text-center">{type} Details</h2>
             <div className="card max-w-2xl mx-auto bg-base-100 shadow-xl">
               <figure>
@@ -42,10 +38,10 @@ const DiorDetails = () => {
                 </div>
                
                 <div className="card-actions">
-                <Link to={`/products/Dior/addtocart/${_id}`}>
+                 <Link to={`/products/:brandname/addtocart/${_id}`}>
                   <button className="btn">Add to Cart</button>
                   </Link>
-                  <Link to={`/products/Dior/update/${_id}`}>
+                  <Link to={`/products/Nike/update/${_id}`}>
                   <button className="btn">Update</button>
                   </Link>
                   
@@ -53,8 +49,8 @@ const DiorDetails = () => {
               </div>
             </div>
         </div>
-    </div>
-  );
+        </div>
+    );
 };
 
-export default DiorDetails;
+export default NikeDetails;

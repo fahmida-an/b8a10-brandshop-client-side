@@ -42,7 +42,6 @@ const AddProducts = () => {
 
   return (
     <div>
-      <h2>This is private add products</h2>
       <Logo></Logo>
       <div className="max-w-6xl mx-auto">
         <h2 className="text-center py-8 font-bold text-5xl">Add a Product</h2>

@@ -12,6 +12,11 @@ import NikeProduct from "../Pages/NikeProduct/NikeProduct";
 import DiorDetails from "../Pages/DiorProduct/DiorDetails";
 import PrivateRoute from "./PrivateRoute";
 import UpdateDiorProduct from "../Pages/DiorProduct/UpdateDiorProduct";
+import AddidasDetails from "../Pages/AddidasProduct/AddidasDetails";
+import UpdateAddidasProduct from "../Pages/AddidasProduct/UpdateAddidasProduct";
+import NikeDetails from "../Pages/NikeProduct/NikeDetails";
+import UpdateNikeProduct from "../Pages/NikeProduct/UpdateNikeProduct";
+import Cart from "../Pages/Cart/Cart";
 const router = createBrowserRouter([
     {
       path: "/",
@@ -66,6 +71,33 @@ const router = createBrowserRouter([
           path: "/products/Dior/update/:id",
           element: <UpdateDiorProduct></UpdateDiorProduct>,
           loader: ({params}) => fetch(`http://localhost:4000/products/Dior/${params.id}`)
+        },
+        {
+          path: "/products/Addidas/:id",
+          element: <AddidasDetails></AddidasDetails>,
+          loader: ({params}) => fetch(`http://localhost:4000/products/Addidas/${params.id}`)
+        },
+        {
+          path: "/products/Addidas/update/:id",
+          element: <UpdateAddidasProduct></UpdateAddidasProduct>,
+          loader: ({params}) => fetch(`http://localhost:4000/products/Addidas/${params.id}`)
+        },
+
+        {
+          path: "/products/Nike/:id",
+          element:<NikeDetails></NikeDetails> ,
+          loader: ({params}) => fetch(`http://localhost:4000/products/Nike/${params.id}`)
+        },
+        {
+          path: "/products/Nike/update/:id",
+          element: <UpdateNikeProduct></UpdateNikeProduct>,
+          loader: ({params}) => fetch(`http://localhost:4000/products/Nike/${params.id}`)
+        },
+        
+        {
+          path: "/products/:brandname/addtocart/:id",
+          element: <Cart></Cart>,
+          loader: ({params}) => fetch(`http://localhost:4000/products/:brandname/${params.id}`)
         }
       ]
     },
