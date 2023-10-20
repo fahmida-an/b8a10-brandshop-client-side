@@ -3,6 +3,8 @@ import Navbar from "../../Sharedpages/Header/Navbar";
 import Banner from "../../Sharedpages/Header/banner";
 import Brand from "../Brands/Brand";
 import WhyChoosUs from "../WhyChooseUs/WhyChoosUs";
+import ClientsReview from "../ClientsReview/ClientsReview";
+import Footer from "../Footer/Footer";
 
 const Home = () => {
     const brands = useLoaderData();
@@ -26,6 +28,10 @@ const Home = () => {
             </div>
 
             <WhyChoosUs></WhyChoosUs>
+           <div className="max-w-5xl mx-auto">
+           <ClientsReview></ClientsReview>
+           </div>
+           <Footer></Footer>
         </div>
     );
 };
