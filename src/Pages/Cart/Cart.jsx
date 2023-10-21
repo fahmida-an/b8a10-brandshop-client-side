@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Logo from '../../Sharedpages/Header/Logo';
+import swal from 'sweetalert';
 
 const Cart = () => {
   const cartItem = useLoaderData();
@@ -19,7 +21,7 @@ const Cart = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:4000/cart', {
+      const response = await fetch('https://b8a10-brandshop-server-side-ct1feotw0-fahmida-khans-projects.vercel.app/cart', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -29,6 +31,7 @@ const Cart = () => {
 
       if (response.ok) {
         console.log('Cart item confirmed successfully.');
+        swal("Successfully", "Added to Cart!", "success");
         // Add further actions here if needed, such as updating UI.
       } else {
         console.error('Failed to confirm cart item.');
@@ -42,9 +45,10 @@ const Cart = () => {
 
   return (
     <div>
+      <Logo></Logo>
       <form
         onSubmit={confirmCart}
-        className="bg-base-300 max-w-xl mx-auto p-8"
+        className="bg-base-300 max-w-xl mx-auto p-8 mt-10"
       >
         <div className="form-control max-w-xl">
           <label className="label">
@@ -71,7 +75,7 @@ const Cart = () => {
               name="brandname"
               value={formData.brandname}
               onChange={handleChange}
-              placeholder="Image URL"
+              placeholder="Brand Name"
               className="input input-bordered w-full"
             />
           </label>
@@ -105,7 +109,7 @@ const Cart = () => {
               name="type"
               value={formData.type}
               onChange={handleChange}
-              placeholder="Image URL"
+              placeholder="type"
               className="input input-bordered w-full"
             />
           </label>
@@ -121,7 +125,7 @@ const Cart = () => {
               name="price"
               value={formData.price}
               onChange={handleChange}
-              placeholder="Image URL"
+              placeholder="Price"
               className="input input-bordered w-full"
             />
           </label>

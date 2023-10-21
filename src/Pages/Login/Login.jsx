@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = ({children}) => {
-  const {logInUser} = useContext(AuthContext);
+  const {logInUser, createAccountwithGoogle} = useContext(AuthContext);
   
   const navigate = useNavigate();
     const handleLoginForm = e =>{
@@ -24,6 +24,17 @@ const Login = ({children}) => {
       
     
     }
+
+    const handleGoogleLogin = () =>{
+      createAccountwithGoogle()
+      .then(result =>{
+        console.log(result.user);
+        navigate('/')
+      })
+      .catch(error =>{
+        console.error(error)
+      })
+     }
     return (
         <div>
          <div>
@@ -65,7 +76,7 @@ const Login = ({children}) => {
                 <button className="btn bg-gray-500 text-gray-900 ">Login</button>
               </div>
             </form>
-            <button className='mb-1'>Login with <span className='text-gray-900'>Google</span></button>
+            <button onClick={handleGoogleLogin}  className='mb-1'>Login with <span className='text-gray-900'>Google</span></button>
             <p className="text-center pb-6">Do not have an account? <Link
             className="text-gray-900" to={'/register'}>Register here</Link></p>
           </div>

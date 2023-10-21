@@ -1,53 +1,51 @@
-
 import { useLoaderData } from "react-router-dom";
-import Logo from "../../Sharedpages/Header/Logo";
 import swal from "sweetalert";
 
-const UpdateNikeProduct = () => {
+const UpdateLvProduct = () => {
 
-    const nikeProduct = useLoaderData();
-  const { _id, name, brandname, type, price, image, rating, details } =
-    nikeProduct;
-
-
+    const lvProduct = useLoaderData();
+    const { _id, name, brandname, type, price, image, rating, details } =
+      lvProduct;
+  
     const handleUpdateProduct = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const image = form.image.value;
-        const name = form.name.value;
-        const brandname = form.brandname.value;
-        const type = form.select.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
-        const details = form.details.value;
-        const updatedProduct = {
-          image,
-          name,
-          brandname,
-          type,
-          price,
-          rating,
-          details,
-        };
-    
-        fetch(`https://b8a10-brandshop-server-side-ct1feotw0-fahmida-khans-projects.vercel.app/products/Nike/${_id}`, {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(updatedProduct),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if(data.matchedCount > 0){
-              swal("Successfully", "Updated data!", "success");
-          }
-          });
+      event.preventDefault();
+      const form = event.target;
+      const image = form.image.value;
+      const name = form.name.value;
+      const brandname = form.brandname.value;
+      const type = form.select.value;
+      const price = form.price.value;
+      const rating = form.rating.value;
+      const details = form.details.value;
+      const updatedProduct = {
+        image,
+        name,
+        brandname,
+        type,
+        price,
+        rating,
+        details,
       };
+      // console.log(updatedProduct);
+  
+      fetch(`https://b8a10-brandshop-server-side-ct1feotw0-fahmida-khans-projects.vercel.app/products/LouisVuitton/${_id}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updatedProduct),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if(data.matchedCount > 0){
+            swal("Successfully", "Updated data!", "success");
+        }
+        });
+    };
     return (
         <div>
-        <Logo></Logo>
+             <Logo></Logo>
         <div className="max-w-6xl mx-auto">
           <h2 className="text-center py-8 font-bold text-5xl">Update Product</h2>
           <form
@@ -93,15 +91,15 @@ const UpdateNikeProduct = () => {
                   name="brandname"
                   className="select select-bordered w-full "
                 >
-                  <option disabled >
+                  <option disabled selected>
                     Brand Name
                   </option>
                   <option value="Dior">Dior</option>
                   <option value="Addidas">Addidas</option>
-                  <option selected defaultValue={brandname} value="Nike">Nike</option>
-                  <option value="LouisVuitton">LouisVuitton</option>
+                  <option value="Nike">Nike</option>
+                  <option  defaultValue={brandname} selected value="LouisVuitton">LouisVuitton</option>
                   <option value="Zara">Zara</option>
-                  <option value="Gucci">Gucci</option>
+                  <option  value="Gucci">Gucci</option>
                 </select>
               </label>
             </div>
@@ -180,8 +178,8 @@ const UpdateNikeProduct = () => {
             />
           </form>
         </div>
-      </div>
+        </div>
     );
 };
 
-export default UpdateNikeProduct;
+export default UpdateLvProduct;

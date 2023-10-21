@@ -42,7 +42,7 @@ const Navbar = ({children}) => {
       </li>
       <li>
         <NavLink
-          to="/blog"
+          to="/mycart"
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? " hover:text-slate-100 mr-2" : ""
           }
@@ -55,10 +55,9 @@ const Navbar = ({children}) => {
 
   return (
     <div>
-  <Logo></Logo>
 
       <div>
-        <div className="navbar bg-gray-500">
+        <div className="navbar bg-gray-700">
           <div className="navbar-start">
             <div className="dropdown">
               <label
@@ -93,7 +92,7 @@ const Navbar = ({children}) => {
             <ul className="menu menu-horizontal px-1 text-white">{navLinks}</ul>
           </div>
 
-          <div className="navbar-end">
+          <div className="navbar-end mr-4 lg:mr-16">
             {user?.email ? (
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -131,7 +130,7 @@ const Navbar = ({children}) => {
                       ? "pending"
                       : isActive
                       ? "text-red-500 rounded-lg p-2 "
-                      : "text-gray-900 mr-4  btn btn-sm"
+                      : "text-white btn btn-sm bg-gray-950 border-none"
                   }
                 >
                   Login
@@ -143,7 +142,7 @@ const Navbar = ({children}) => {
                       ? "pending"
                       : isActive
                       ? " text-red-500 rounded-lg p-2"
-                      : " text-gray-900 btn btn-sm"
+                      : " text-white btn btn-sm bg-gray-950 border-none"
                   }
                 >
                   SignUp

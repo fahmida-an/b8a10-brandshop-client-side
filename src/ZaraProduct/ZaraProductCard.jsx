@@ -1,22 +1,22 @@
 import { Link } from "react-router-dom";
-import { FaStar } from 'react-icons/fa';
-
-const AddidasProductCard = ({ product }) => {
+import { FaStar } from "react-icons/fa";
+import Slider from "../Sharedpages/Slider/Slider";
+const ZaraProductCard = ({ product }) => {
   const { _id, name, brandname, type, price, image, rating, details } = product;
 
   const stars = [];
-  for(let i = 1; i<=5; i++){
+  for (let i = 1; i <= 5; i++) {
     // const starClassName = i <= rating ? <FaStar></FaStar> : '';
     const isFilled = i <= rating;
     stars.push(
       <span key={i}>
-      {isFilled ? <FaStar className="text-red-500" /> : <FaStar />}
-    </span>
+        {isFilled ? <FaStar className="text-red-500" /> : <FaStar />}
+      </span>
     );
   }
   return (
-    <div>
-      <div className="card w-72 bg-gray-200 mx-auto shadow-xl mt-3">
+    <>
+      <div className="card w-72 bg-gray-200 shadow-xl mx-auto mt-3" >
         <figure>
           <img src={image} alt="" />
         </figure>
@@ -27,14 +27,16 @@ const AddidasProductCard = ({ product }) => {
           <p className="flex items-center">Rating: {stars}</p>
 
           <div className="card-actions justify-end">
-          <Link to={`/products/Addidas/${_id}`}>
-          <button className="btn bg-gray-900 text-white">See Details</button>
-          </Link>
+            <Link to={`/products/Zara/${_id}`}>
+              <button className="btn bg-gray-900 border-none text-white">
+                See Details
+              </button>
+            </Link>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default AddidasProductCard;
+export default ZaraProductCard;

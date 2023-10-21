@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
-import Logo from "../../Sharedpages/Header/Logo";
 import swal from "sweetalert";
+import Navbar from "../../Sharedpages/Header/Navbar";
 
 const UpdateDiorProduct = () => {
   const diorProducts = useLoaderData();
@@ -28,7 +28,7 @@ const UpdateDiorProduct = () => {
     };
     // console.log(updatedProduct);
 
-    fetch(`http://localhost:4000/products/Dior/${_id}`, {
+    fetch(`https://b8a10-brandshop-server-side-ct1feotw0-fahmida-khans-projects.vercel.app/products/Dior/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -45,7 +45,7 @@ const UpdateDiorProduct = () => {
   };
   return (
     <div>
-      <Logo></Logo>
+      <Navbar></Navbar>
       <div className="max-w-6xl mx-auto">
         <h2 className="text-center py-8 font-bold text-5xl">Update Product</h2>
         <form
@@ -94,10 +94,10 @@ const UpdateDiorProduct = () => {
                 <option disabled selected defaultValue={brandname}>
                   Brand Name
                 </option>
-                <option value="Dior">Dior</option>
+                <option defaultValue={brandname} selected value="Dior">Dior</option>
                 <option value="Addidas">Addidas</option>
                 <option value="Nike">Nike</option>
-                <option value="Aarong">Aarong</option>
+                <option value="LouisVuitton">LouisVuitton</option>
                 <option value="Zara">Zara</option>
                 <option value="Gucci">Gucci</option>
               </select>
@@ -116,6 +116,11 @@ const UpdateDiorProduct = () => {
                 <option value="Watch">Watch</option>
                 <option value="Shoes">Shoes</option>
                 <option value="Jewellery">Jewellery</option>
+                <option value="Bags">Bags</option>
+                <option value="Mobile Case">Mobile Case</option>
+                <option value="Perfume">Perfume</option>
+                <option value="T-Shirt">T-Shirt</option>
+                <option value="Cap">Cap</option>
                 <option value="Foundation">Foundation</option>
                 <option value="Lipsticks">Lipsticks</option>
                 <option value="Eye Shadow">Eye Shadow</option>

@@ -1,16 +1,18 @@
 import { useLoaderData } from "react-router-dom";
 import DiorProductCard from "./DiorProductCard";
+import Slider from "../../Sharedpages/Slider/Slider";
 
 const DiorProduct = () => {
   const diorProducts = useLoaderData();
-  console.log(diorProducts);
+  // console.log(diorProducts);
   return (
-    <div>
-      <div>
+    <div className="">
+      <Slider></Slider>
+      <div className="">
         <h1 className="py-10 text-center text-3xl font-rancho">
           All Dior Products: {diorProducts.length}
         </h1>
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-1 lg:grid-cols-3 mx-auto">
           {diorProducts.map((product) => (
             <DiorProductCard
               key={product._id}

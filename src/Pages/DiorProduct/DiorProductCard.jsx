@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaStar } from 'react-icons/fa';
 import swal from "sweetalert";
 
-const DiorProductCard = ({ product, dProducts, setDproducts }) => {
+const DiorProductCard = ({ product}) => {
   const { _id, name, brandname, type, price, image, rating, details } = product;
 
   const stars = [];
@@ -18,42 +18,8 @@ const DiorProductCard = ({ product, dProducts, setDproducts }) => {
   }
 
 
-
-  const handleDelete = _id => {
-    console.log(_id);
-    swal({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this imaginary file!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    })
-    .then((willDelete) => {
-      if (willDelete) {
-        fetch(`http://localhost:4000/products/Dior/${_id}`, {
-          method: "DELETE",
-        })
-
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          if(data.deletedCount > 0){
-            swal("Poof! Your imaginary file has been deleted!", {
-              icon: "success",
-            });
-            const remaining = dProducts.filter(cof => cof._id ===_id);
-            setDproducts(remaining)
-          }
-        })
-        
-      } else {
-        swal("Your imaginary file is safe!");
-      }
-    });
-  }
-
   return (
-    <div className="card w-72 bg-base-100 shadow-xl">
+    <div className="card w-72 bg-base-100 shadow-xl mx-auto">
       <figure>
         <img
           src={image}
@@ -64,13 +30,12 @@ const DiorProductCard = ({ product, dProducts, setDproducts }) => {
         <h2 className="card-title">Brand: {brandname}</h2>
         <p>Name: {name}</p>
         <p>Type: {type}</p>
-        <p className="flex">Rating: {stars}</p>
+        <p className="flex items-center">Rating: {stars}</p>
         
         <div className="card-actions justify-end">
           <Link to={`/products/Dior/${_id}`}>
-          <button className="btn btn-primary">See Details</button>
+          <button className="btn bg-gray-900 border-none text-white">See Details</button>
           </Link>
-          <button onClick={()=> handleDelete(_id)} className="btn">DELETE</button>
         </div>
       </div>
     </div>

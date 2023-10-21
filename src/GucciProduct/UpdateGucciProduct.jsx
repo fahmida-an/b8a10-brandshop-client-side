@@ -1,50 +1,50 @@
-
 import { useLoaderData } from "react-router-dom";
-import Logo from "../../Sharedpages/Header/Logo";
 import swal from "sweetalert";
+import Logo from "../Sharedpages/Header/Logo";
 
-const UpdateNikeProduct = () => {
+const UpdateGucciProduct = () => {
 
-    const nikeProduct = useLoaderData();
+    const gucciProducts = useLoaderData();
   const { _id, name, brandname, type, price, image, rating, details } =
-    nikeProduct;
+    gucciProducts;
 
+  const handleUpdateProduct = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const image = form.image.value;
+    const name = form.name.value;
+    const brandname = form.brandname.value;
+    const type = form.select.value;
+    const price = form.price.value;
+    const rating = form.rating.value;
+    const details = form.details.value;
+    const updatedProduct = {
+      image,
+      name,
+      brandname,
+      type,
+      price,
+      rating,
+      details,
+    };
+    // console.log(updatedProduct);
 
-    const handleUpdateProduct = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const image = form.image.value;
-        const name = form.name.value;
-        const brandname = form.brandname.value;
-        const type = form.select.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
-        const details = form.details.value;
-        const updatedProduct = {
-          image,
-          name,
-          brandname,
-          type,
-          price,
-          rating,
-          details,
-        };
-    
-        fetch(`https://b8a10-brandshop-server-side-ct1feotw0-fahmida-khans-projects.vercel.app/products/Nike/${_id}`, {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(updatedProduct),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if(data.matchedCount > 0){
-              swal("Successfully", "Updated data!", "success");
-          }
-          });
-      };
+    fetch(`https://b8a10-brandshop-server-side-ct1feotw0-fahmida-khans-projects.vercel.app/products/Gucci/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if(data.matchedCount > 0){
+          swal("Successfully", "Updated data!", "success");
+      }
+      });
+  };
+
     return (
         <div>
         <Logo></Logo>
@@ -93,15 +93,15 @@ const UpdateNikeProduct = () => {
                   name="brandname"
                   className="select select-bordered w-full "
                 >
-                  <option disabled >
+                  <option disabled selected>
                     Brand Name
                   </option>
                   <option value="Dior">Dior</option>
                   <option value="Addidas">Addidas</option>
-                  <option selected defaultValue={brandname} value="Nike">Nike</option>
+                  <option value="Nike">Nike</option>
                   <option value="LouisVuitton">LouisVuitton</option>
                   <option value="Zara">Zara</option>
-                  <option value="Gucci">Gucci</option>
+                  <option defaultValue={brandname} selected value="Gucci">Gucci</option>
                 </select>
               </label>
             </div>
@@ -118,11 +118,6 @@ const UpdateNikeProduct = () => {
                   <option value="Watch">Watch</option>
                   <option value="Shoes">Shoes</option>
                   <option value="Jewellery">Jewellery</option>
-                  <option value="Bags">Bags</option>
-                <option value="Mobile Case">Mobile Case</option>
-                <option value="Perfume">Perfume</option>
-                <option value="T-Shirt">T-Shirt</option>
-                <option value="Cap">Cap</option>
                   <option value="Foundation">Foundation</option>
                   <option value="Lipsticks">Lipsticks</option>
                   <option value="Eye Shadow">Eye Shadow</option>
@@ -184,4 +179,4 @@ const UpdateNikeProduct = () => {
     );
 };
 
-export default UpdateNikeProduct;
+export default UpdateGucciProduct;

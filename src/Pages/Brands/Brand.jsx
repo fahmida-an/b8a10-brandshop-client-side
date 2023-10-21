@@ -4,10 +4,10 @@ const Brand = ({ brand }) => {
   const { image, brandname } = brand;
 
   return (
-    <div>
-      <div className="grid grid-cols-3 gap-4">
+    <div className="mx-auto">
+      <div className="">
         <Link to={`/products/${brandname}`}>
-          <div className="card w-72 shadow-xl hover:shadow-3xl bg-base-100 mt-10 ">
+          <div className="card w-80 lg:w-72 shadow-xl hover:shadow-3xl bg-gray-200 mt-10 ">
             <figure>
               <img src={image} alt="nike" />
             </figure>

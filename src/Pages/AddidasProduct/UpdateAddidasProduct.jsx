@@ -28,7 +28,7 @@ const UpdateAddidasProduct = () => {
         };
         // console.log(updatedProduct);
 
-    fetch(`http://localhost:4000/products/Addidas/${_id}`, {
+    fetch(`https://b8a10-brandshop-server-side-ct1feotw0-fahmida-khans-projects.vercel.app/products/Addidas/${_id}`, {
         method: "PUT",
         headers: {
             "content-type" : "application/json"
@@ -98,9 +98,9 @@ const UpdateAddidasProduct = () => {
                   Brand Name
                 </option>
                 <option value="Dior">Dior</option>
-                <option value="Addidas">Addidas</option>
+                <option defaultValue={brandname} selected value="Addidas">Addidas</option>
                 <option value="Nike">Nike</option>
-                <option value="Aarong">Aarong</option>
+                <option value="LouisVuitton">LouisVuitton</option>
                 <option value="Zara">Zara</option>
                 <option value="Gucci">Gucci</option>
               </select>
@@ -120,6 +120,11 @@ const UpdateAddidasProduct = () => {
                 <option value="Watch">Watch</option>
                 <option value="Shoes">Shoes</option>
                 <option value="Jewellery">Jewellery</option>
+                <option value="Bags">Bags</option>
+                <option value="Mobile Case">Mobile Case</option>
+                <option value="Perfume">Perfume</option>
+                <option value="T-Shirt">T-Shirt</option>
+                <option value="Cap">Cap</option>
                 <option value="Foundation">Foundation</option>
                 <option value="Lipsticks">Lipsticks</option>
                 <option value="Eye Shadow">Eye Shadow</option>
