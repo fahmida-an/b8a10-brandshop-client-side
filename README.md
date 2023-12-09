@@ -1,8 +1,17 @@
-# React + Vite
+# FahminsWearCollection 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Fahmins Wear Collection is a website where people can see available wear things.
 
-Currently, two official plugins are available:
+## [ Visit Our Website ](https://b8a10-brandshop-client-s-353c1.web.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+`Project Features:`
+- Diverse Collection of Clothes
+- Single product detail page
+- Available six brands
+- Email Login and Registration Authentication
+- Google Login Authentication 
+- Private Route 
+- Home page
+- Navbar and beautiful banner section 
+- client Reviews 
+- Why Choose Us Section 
