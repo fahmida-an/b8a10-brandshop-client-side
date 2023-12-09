@@ -15,3 +15,9 @@ Fahmins Wear Collection is a website where people can see available wear things.
 - Navbar and beautiful banner section 
 - client Reviews 
 - Why Choose Us Section 
+
+## Technologies
+- Frontend: tailwindcss, mambaui, daisyui, flowbite, javascript, html
+- Backend: nodejs, expressls
+- Database: mongodb
+- Authentication: firebase
